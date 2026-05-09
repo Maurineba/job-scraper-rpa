@@ -1,5 +1,3 @@
-from utils.parse_salary import parse_salary
-
 from openpyxl import Workbook
 from openpyxl.chart import PieChart, Reference
 from collections import Counter
@@ -26,11 +24,14 @@ def export_jobs(file_name="data/vagas.xlsx"):
          job["link"]
       ])
 
+   for cell in ws["B"]:
+      cell.number_format = 'R$ #,##0.00'
+
    dash = wb.create_sheet("DASHBOARD")
 
    total_vagas = len(jobs)
 
-   salarios = [parse_salary(j["salario"]) for j in jobs]
+   salarios = [j["salario"] for j in jobs]
 
    media_salario = sum(salarios) / len(salarios) if salarios else 0
 

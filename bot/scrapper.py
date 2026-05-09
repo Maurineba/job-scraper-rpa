@@ -1,5 +1,6 @@
 from bot.logger import logger
 from utils.resolve_salary import resolve_salary
+from utils.parse_salary import parse_salary
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -42,7 +43,7 @@ def get_jobs():
 
                jobs.append({
                   "titulo": name,
-                  "salario": resolve_salary(salary),
+                  "salario": parse_salary(resolve_salary(salary)),
                   "modalidade": work_model,
                   "link": link.get_attribute("href")
                })
