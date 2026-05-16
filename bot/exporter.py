@@ -31,7 +31,7 @@ def export_jobs(file_name="data/vagas.xlsx"):
 
    total_vagas = len(jobs)
 
-   salarios = [j["salario"] for j in jobs]
+   salarios = [float(j["salario"]) for j in jobs]
 
    media_salario = sum(salarios) / len(salarios) if salarios else 0
 
